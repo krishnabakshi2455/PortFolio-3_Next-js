@@ -1,9 +1,13 @@
+"use client"
+
+import App from "./App";
+
 
 
 export default function Home() {
   return (
    <>
-   hello
+    <App/>
    </>
   );
 }
