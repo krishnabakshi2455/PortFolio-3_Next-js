@@ -7,6 +7,8 @@ import { FaBars } from 'react-icons/fa';
 import { useTheme } from 'styled-components';
 import { Close, CloseRounded } from '@mui/icons-material';
 import { Bio } from '@/app/data/constants';
+import Link from 'next/link';
+
 const Navbar = () => {
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -16,9 +18,9 @@ const Navbar = () => {
           <Nav>
               <NavbarContainer>
                   <NavLogo to='/'>
-                      <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
+                      <p className=' flex items-center text-white mb-5 cursor-pointer'>
                           <DiCssdeck size="3rem" /> <Span>Portfolio</Span>
-                      </a>
+                      </p>
                   </NavLogo>
                   <MobileIcon>
                       <FaBars onClick={() => {
