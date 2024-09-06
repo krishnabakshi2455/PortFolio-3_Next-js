@@ -5,6 +5,8 @@ import { darkTheme } from "./utils/Utils";
 import { BrowserRouter as Router } from 'react-router-dom'
 import { BrowserRouter  } from 'react-router-dom'
 import HomePage from '@/app/components/HomePage/Home'
+import Skills from './components/Skills/Skills';
+import Navbar from './components/Header/Navbar';
 // No need to declare`Body` as a `string`, `styled.div` is already typed correctly
 const Body = styled.div`
 background-color:${({ theme }) => theme.bg};
@@ -23,14 +25,15 @@ const App = () => {
   return (
     <>
           <ThemeProvider theme={darkTheme}>
-              {/* <BrowserRouter> */}
+              <BrowserRouter>
+              <Navbar/>
                   <Body>
                       <HomePage/>
                       <Wrapper>
-                          <h1>Home</h1>
+                          <Skills/>
                       </Wrapper>
                   </Body>
-              {/* </BrowserRouter> */}
+              </BrowserRouter>
           </ThemeProvider>
     </>
   )
