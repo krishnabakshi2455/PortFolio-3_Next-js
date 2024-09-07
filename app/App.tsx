@@ -7,6 +7,7 @@ import { BrowserRouter  } from 'react-router-dom'
 import HomePage from '@/app/components/HomePage/Home'
 import Skills from './components/Skills/Skills';
 import Navbar from './components/Header/Navbar';
+import Projects from './components/Projects/Projects';
 // No need to declare`Body` as a `string`, `styled.div` is already typed correctly
 const Body = styled.div`
 background-color:${({ theme }) => theme.bg};
@@ -31,6 +32,7 @@ const App = () => {
                       <HomePage/>
                       <Wrapper>
                           <Skills/>
+                          <Projects/>
                       </Wrapper>
                   </Body>
               </BrowserRouter>

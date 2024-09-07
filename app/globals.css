@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.k {
+    background: linear-gradient(343.07deg,
+            rgba(132, 59, 206, 0.06) 5.71%,
+            rgba(132, 59, 206, 0) 64.83%);
+            background-color: rgba(0, 0, 255, 0.8);
+            color: rgba(0, 0, 237, 0.814);
+}
+.ProjectNavlink{
+    background-color: rgba(0, 0, 237, 0.814);
+    color: white;
+}

@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
 
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isopen, setIsOpen] = React.useState(false);
     const theme = useTheme()
   return (
     <>
@@ -24,38 +24,38 @@ const Navbar = () => {
                   </NavLogo>
                   <MobileIcon>
                       <FaBars onClick={() => {
-                          setIsOpen(!isOpen)
+                          setIsOpen(!isopen)
                       }} />
                   </MobileIcon>
                   <NavItems>
                       <NavLink href="#about">About</NavLink>
                       <NavLink href='#skills'>Skills</NavLink>
-                      {/* <NavLink href='#experience'>Experience</NavLink> */}
                       <NavLink href='#projects'>Projects</NavLink>
                       <NavLink href='#education'>Education</NavLink>
                       <NavLink href='#contact'>Contact</NavLink>
                   </NavItems>
+                  
                   <ButtonContainer>
                       {/* This way, you ensure that the href is always a valid string, avoiding the TypeScript error. If github is an empty string or array, it will fall back to "#". */}
                       <GitHubButton href={Array.isArray(Bio.github) ? Bio.github[0] || "#" : Bio.github} target="_blank">Github Profile</GitHubButton>
                   </ButtonContainer>
                   {
-                      isOpen &&
-                      <MobileMenu isOpen={isOpen}>
+                      isopen &&
+                      <MobileMenu isOpen={isopen}>
                           <MobileLink href="#about" onClick={() => {
-                              setIsOpen(!isOpen)
+                              setIsOpen(!isopen)
                           }}>About</MobileLink>
                           <MobileLink href='#skills' onClick={() => {
-                              setIsOpen(!isOpen)
+                              setIsOpen(!isopen)
                           }}>Skills</MobileLink>
                           <MobileLink href='#projects' onClick={() => {
-                              setIsOpen(!isOpen)
+                              setIsOpen(!isopen)
                           }}>Projects</MobileLink>
                           <MobileLink href='#education' onClick={() => {
-                              setIsOpen(!isOpen)
+                              setIsOpen(!isopen)
                           }}>Education</MobileLink>
                           <MobileLink href='#contact' onClick={() => {
-                              setIsOpen(!isOpen)
+                              setIsOpen(!isopen)
                           }}>Contact</MobileLink>
                               <GitHubButton style={{ padding: '10px 16px', background: `${theme.primary}`, color: 'white', width: 'max-content' }} href={Array.isArray(Bio.github) ? Bio.github[0] || "#" : Bio.github} target="_blank">Github Profile</GitHubButton>
                       </MobileMenu>
