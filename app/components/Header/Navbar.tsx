@@ -55,7 +55,7 @@ const Navbar = () => {
                         <DiCssdeck size="3rem" /> <Span>Portfolio</Span>
                     </NavLogo>
                     <MobileIcon>
-                        <FaBars onClick={toggleMenu} />
+                        <FaBars onClick={toggleMenu} />~
                     </MobileIcon>
                     <NavItems>
                         {/* <NavLink href="#about" className={isActive('#about') ? 'active' : ''}>About</NavLink> */}
