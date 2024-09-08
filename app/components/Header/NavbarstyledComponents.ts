@@ -1,4 +1,7 @@
-import { Link as LinkR } from 'react-router-dom';
+// import { Link as LinkR } from 'react-router-dom';
+import Link from 'next/link';
+
+// import Link from 'next/link';
 import styled from 'styled-components';
 // import _default from '';
 
@@ -27,17 +30,7 @@ export const NavbarContainer = styled.div`
   max-width: 1200px;
 `;
 
-export const NavLogo = styled(LinkR)`
-    width: 80%;    
-    padding: 0 6px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    text-decoration: none;
-    @media (max-width: 640px) {
-      padding: 0 0px;
-  }
-`;
+
 export const Span = styled.div`
     padding: 0 4px;
     font-weight: bold;
@@ -59,17 +52,7 @@ export const NavItems = styled.ul`
     }
 `;
 
-export const NavLink = styled.a`
-    color: ${({ theme }) => theme.text_primary};
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
 
-    &.active {
-      border-bottom: 2px solid ${({ theme }) => theme.primary};
-    }
-`;
 
 
 export const GitHubButton = styled.a`
@@ -153,7 +136,7 @@ export const MobileMenuItems = styled.ul`
   height: 100%;
 `
 
-export const MobileMenuLink = styled(LinkR)`
+export const MobileMenuLink = styled(Link)`
   color: ${({ theme }) => theme.text_primary};
   font-weight: 500;
   cursor: pointer;
@@ -204,7 +187,7 @@ export const MobileLink = styled.a`
   }
 `;
 
-export const MobileNavLogo = styled(LinkR)`
+export const MobileNavLogo = styled(Link)`
   width: 80%;
   padding: 0 6px;
   display: flex;

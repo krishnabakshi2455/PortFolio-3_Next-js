@@ -2,8 +2,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { darkTheme } from "./utils/Utils";
-import { BrowserRouter as Router } from 'react-router-dom'
-import { BrowserRouter  } from 'react-router-dom'
 import HomePage from '@/app/components/HomePage/Home'
 import Skills from './components/Skills/Skills';
 import Navbar from './components/Header/Navbar';
@@ -26,7 +24,6 @@ const App = () => {
   return (
     <>
           <ThemeProvider theme={darkTheme}>
-              <BrowserRouter>
               <Navbar/>
                   <Body>
                       <HomePage/>
@@ -35,7 +32,6 @@ const App = () => {
                           <Projects/>
                       </Wrapper>
                   </Body>
-              </BrowserRouter>
           </ThemeProvider>
     </>
   )
