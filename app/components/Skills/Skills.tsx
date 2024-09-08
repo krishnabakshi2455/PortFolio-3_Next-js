@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { skills } from '@/app/data/constants'
 
@@ -125,10 +126,14 @@ const SkillImage = styled.img`
 
 
 
+
+
 const Skills = () => {
+  const mainref = useRef()
+  const idref = mainref.current
     return (
         <>
-            <Container id="skills">
+        <Container id="skills" ref={idref}>
                 <Wrapper>
                     <Title>Skills</Title>
                     <Desc>Here are some of my skills on which I have been worked on.

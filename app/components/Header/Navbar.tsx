@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Nav, NavbarContainer, Span, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink } from './NavbarstyledComponents';
 import { DiCssdeck } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
@@ -32,18 +32,21 @@ const NavLink = styled(Link)`
 
   &.active {
     border-bottom: 4px solid ${({ theme }) => theme.primary};
-    background-color: rgba(0, 0, 237, 0.814);
-    color: white;
   }
 `;
 
 const Navbar = () => {
     const pathname = usePathname(); // Get the current pathname
-    const isActive = (href: string) => pathname === href; // Determine if the link is active
     console.log(pathname);
-    
 
-    const [isopen, setIsOpen] = useState(false);
+    const [pathset, setpathset] = useState<string>('')
+    const changePath = (path: string) => {
+        setpathset(path)
+    }
+
+    const isActive = (href: string) => pathset === href;
+
+    const [isopen, setIsOpen] = useState<boolean>(false);
     const theme = useTheme();
     const toggleMenu = () => setIsOpen(!isopen);
 
@@ -58,17 +61,31 @@ const Navbar = () => {
                         <FaBars onClick={toggleMenu} />~
                     </MobileIcon>
                     <NavItems>
-                        {/* <NavLink href="#about" className={isActive('#about') ? 'active' : ''}>About</NavLink> */}
-                        <NavLink href="#about" className={`link ${pathname === '/' ? 'active' : ''}`}>About</NavLink>
-                        {/* <NavLink href='#skills' className={isActive('#skills') ? 'active' : ''}>Skills</NavLink> */}
-                        <NavLink href='#skills' className={`link ${pathname === '/skills' ? 'active' : ''}`}>Skills</NavLink>
-                        <NavLink href='#projects' className={isActive('#projects') ? 'active' : ''}>Projects</NavLink>
-                        <NavLink href='#education' className={isActive('#education') ? 'active' : ''}>Education</NavLink>
-                        <NavLink href='#contact' className={isActive('#contact') ? 'active' : ''}>Contact</NavLink>
+                        <NavLink className={isActive('#about') ? 'active' : ''} href="#about" scroll={true} onClick={() => {
+                            changePath('#about'),
+                                isActive('#about')
+                        }}>About</NavLink>
+                        <NavLink href='#skills' className={isActive('#skills') ? 'active' : ''} onClick={() => {
+                            changePath('#skills'),
+                                isActive('#skills')
+                        }}>Skills</NavLink>
+                        <NavLink href='#projects' className={isActive('#projects') ? 'active' : ''} onClick={() => {
+                            changePath('#projects'),
+                                isActive('#projects')
+                        }}>Projects</NavLink>
+                        <NavLink href='#education' className={isActive('#education') ? 'active' : ''} onClick={() => {
+                            changePath('#education'),
+                                isActive('#education')
+                        }}>Education</NavLink>
+                        <NavLink href='#contact' className={isActive('#contact') ? 'active' : ''} onClick={() => {
+                            changePath('#contact'),
+                                isActive('#contact')
+                        }}>Contact</NavLink>
                     </NavItems>
 
                     <ButtonContainer>
                         {(Array.isArray(Bio.github) && Bio.github[0]) && (
+
                             <GitHubButton href={Bio.github[0]} target="_blank">
                                 Github Profile
                             </GitHubButton>
@@ -77,9 +94,9 @@ const Navbar = () => {
 
                     {isopen && (
                         <MobileMenu isOpen={isopen}>
-                            <MobileLink href="/about" onClick={toggleMenu} className={isActive('#about') ? 'active' : ''}>About</MobileLink>
-                            <MobileLink href='/skills' onClick={toggleMenu} className={isActive('#skills') ? 'active' : ''}>Skills</MobileLink>
-                            <MobileLink href='/projects' onClick={toggleMenu} className={isActive('#projects') ? 'active' : ''}>Projects</MobileLink>
+                            <MobileLink href="#about" onClick={toggleMenu} className={isActive('#about') ? 'active' : ''}>About</MobileLink>
+                            <MobileLink href='#skills' onClick={toggleMenu} className={isActive('#skills') ? 'active' : ''}>Skills</MobileLink>
+                            <MobileLink href='#projects' onClick={toggleMenu} className={isActive('#projects') ? 'active' : ''}>Projects</MobileLink>
                             <MobileLink href='#education' onClick={toggleMenu} className={isActive('#education') ? 'active' : ''}>Education</MobileLink>
                             <MobileLink href='#contact' onClick={toggleMenu} className={isActive('#contact') ? 'active' : ''}>Contact</MobileLink>
                             <GitHubButton style={{ padding: '10px 16px', background: `${theme.primary}`, color: 'white', width: 'max-content' }} href={Array.isArray(Bio.github) ? Bio.github[0] || "#" : Bio.github} target="_blank">
