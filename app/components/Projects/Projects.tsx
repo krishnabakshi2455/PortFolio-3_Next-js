@@ -1,158 +1,230 @@
-"use client"
-import React from 'react'
-import Theme from '@/app/theme/Theme'
-import styled from 'styled-components';
 import { projects } from '@/app/data/constants';
-import { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 
+// Types for Project, Member
+
+
+// Styled Components
 const Container = styled.div`
-    background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% 100%,100% 98%, 0 100%);
+  background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 98%, 0 100%);
 `;
 
 const Wrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1350px;
-    padding: 10px 0px 100px 0;
-    gap: 12px;
-    @media (max-width: 960px) {
-        flex-direction: column;
-    }
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1350px;
+  padding: 10px 0px 100px 0;
+  gap: 12px;
 `;
 
 const Title = styled.div`
-font-size: 42px;
-text-align: center;
-font-weight: 600;
-margin-top: 20px;
+  font-size: 42px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
   color: ${({ theme }) => theme.text_primary};
-  @media (max-width: 768px) {
-      margin-top: 12px;
-      font-size: 32px;
-  }
 `;
 
 const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
+  font-size: 18px;
+  text-align: center;
+  max-width: 600px;
+  color: ${({ theme }) => theme.text_secondary};
 `;
 
 const ToggleButtonGroup = styled.div`
-    display: flex;
-    border: 1.5px solid ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
-    font-size: 16px;
-    border-radius: 12px;
-    font-weight: 500;
-    margin: 22px 0px;
-    @media (max-width: 768px) {
-        font-size: 12px;
-    }
-`
+  display: flex;
+  border: 1.5px solid ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primary};
+  font-size: 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  margin: 22px 0px;
+`;
+
 const Divider = styled.div`
-    width: 1.5px;
-    background: ${({ theme }) => theme.primary};
-`
-interface ToggleButtonProps {
-    active: boolean;
-}
-const ToggleButton = styled.div.attrs<{ active: boolean }>(({ active }) => ({
-    active: active || undefined, // Remove 'false' from DOM attributes
-})) <ToggleButtonProps>`
+  width: 1.5px;
+  background: ${({ theme }) => theme.primary};
+`;
+
+const ToggleButton = styled.div<{ active: boolean }>`
   padding: 8px 18px;
   border-radius: 6px;
   cursor: pointer;
-  background-color: ${({ active }) => (active ? "rgba(0, 0, 237, 0.814)" : "transparent")};
-  color: ${({ active }) => (active ? "white" : "inherit")};
+  background: ${({ active, theme }) => (active ? theme.primary + '20' : 'transparent')};
+  color: ${({ active, theme }) => (active ? theme.white : theme.primary)};
   &:hover {
-    background: ${({ theme }) => theme.primary + 8};
-  }
-  @media (max-width: 768px) {
-    padding: 6px 8px;
-    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    background: ${({ theme }) => theme.primary + '10'};
   }
 `;
 
 const CardContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // grid-gap: 32px;
-    // grid-auto-rows: minmax(100px, auto);
-    // @media (max-width: 960px) {
-    //     grid-template-columns: repeat(2, 1fr);
-    // }
-    // @media (max-width: 640px) {
-    //     grid-template-columns: repeat(1, 1fr);
-    // }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
 `;
 
+// Project Card Styles
+const Card = styled.div`
+  width: 330px;
+  height: 490px;
+  background-color: ${({ theme }) => theme.card};
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.4);
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px 4px rgba(0, 0, 0, 0.6);
+  }
+`;
 
-const Projects = () => {
+const Imageb = styled.img`
+  width: 100%;
+  height: 180px;
+  background-color: ${({ theme }) => theme.white};
+  border-radius: 10px;
+`;
+
+const Tags = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const Tag = styled.span`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.primary};
+  padding: 2px 8px;
+  border-radius: 10px;
+`;
+
+const Details = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 2px;
+`;
+
+const TitleCard = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_secondary};
+`;
+
+const Date = styled.div`
+  font-size: 12px;
+  margin-left: 2px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + '80'};
+`;
+
+const Description = styled.div`
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + '99'};
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: auto;
+  height: 25vh;
+`;
+
+const Members = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`;
+// Main Component
+const Projects: React.FC = () => {
+
+
+
+
+    const [toggle, setToggle] = useState<string>('all');
+
+    // Debugging: Log current toggle and filtered projects
+    console.log('Current Toggle:', toggle);
+    const filteredProjects = toggle === 'all'
+        ? projects
+        : projects.filter((project) => project.category.toLowerCase() === toggle);
+
+    console.log('Filtered Projects:', filteredProjects);
+
+    {/*Key Points:
+Category Comparison: Ensure that category.toLowerCase() matches exactly with project.category.toLowerCase().
+Console Logs: Added console.log statements to check the current toggle state and the filtered projects.
+Fallback for Images: Added a fallback image for null or missing images.
+Make sure you check the console for the output of console.log to diagnose the problem further. If the category names in the projects array or the toggle buttons don’t match exactly, adjust them accordingly. */}
     return (
-        <>
-            <Container id="projects">
-                <Wrapper>
-                    <Title>Projects</Title>
-                    <Desc>
-                        <ToggleButtonGroup>
-                            
-                            <Link href="/AllProjects">
-                                <ToggleButton active={true}>ALL</ToggleButton>
-                            </Link>
-
+        <Container id="projects">
+            <Wrapper>
+                <Title>Projects</Title>
+                <Desc>Explore my projects in different areas</Desc>
+                <ToggleButtonGroup>
+                    {['All', 'Front-end', 'Back-end', 'Full-Stack'].map((category) => (
+                        <React.Fragment key={category}>
+                            <ToggleButton
+                                active={toggle === category.toLowerCase()}
+                                onClick={() => setToggle(category.toLowerCase())}
+                            >
+                                {category}
+                            </ToggleButton>
                             <Divider />
+                        </React.Fragment>
+                    ))}
+                </ToggleButtonGroup>
+                <CardContainer>
+                    {filteredProjects.map((project) => (
+                        <Card key={project.id} >
+                            <Imageb src={project.image || '/placeholder.png'} alt={project.title} />
+                            <Tags>
+                                {project.tags.map((tag, index) => (
+                                    <Tag key={index}>{tag}</Tag>
+                                ))}
+                            </Tags>
+                            <Details>
+                                <TitleCard>{project.title}</TitleCard>
+                                <Date>{project.date || 'N/A'}</Date>
+                             
+                                <Description>{project.description}</Description>
+                            </Details>
+                            {/* <Members>
+                                {project.member?.map((member, index) => (
+                                    <Avatar key={index} src={member.img || '/placeholder.png'} />
+                                ))}
+                            </Members> */}
+                        </Card>
+                    ))}
+                </CardContainer>
+            </Wrapper>
+        </Container>
+    );
+};
 
-                            <Link href="/frontend">
-                                <ToggleButton active={true}>Front-End</ToggleButton>
-                            </Link>
-
-                            <Divider />
-
-                            <Link href="/backend">
-                                <ToggleButton active={true}>Back-End</ToggleButton>
-                            </Link>
-
-                            <Divider />
-
-                            <Link href="/fullstack">
-                                <ToggleButton active={true}>Fullstack</ToggleButton>
-                            </Link>
-
-                            {/*
-                            Using NavLink for each button: Now, each section (ALL, Front-End, Back-End, and Fullstack) is wrapped in a NavLink. The isActive state from NavLink is passed to the ToggleButton component.
-                            Conditional active prop: Based on the isActive value, the active state is applied to style the ToggleButton accordingly.
-                            */}
-                        </ToggleButtonGroup>
-
-                    </Desc>
-                    <CardContainer>heello</CardContainer>
-                </Wrapper>
-            </Container>
-        </>
-    )
-}
-
-export default Projects
+export default Projects;

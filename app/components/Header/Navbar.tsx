@@ -64,7 +64,8 @@ const Navbar = () => {
                         <NavLink className={isActive('#about') ? 'active' : ''} href="#about" scroll={true} onClick={() => {
                             changePath('#about'),
                                 isActive('#about')
-                        }}>About</NavLink>
+                        }}>
+                            About</NavLink>
                         <NavLink href='#skills' className={isActive('#skills') ? 'active' : ''} onClick={() => {
                             changePath('#skills'),
                                 isActive('#skills')

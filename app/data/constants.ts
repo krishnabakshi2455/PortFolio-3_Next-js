@@ -191,8 +191,25 @@ export const education: {}[] = [
     },
 
 ];
+interface Member {
+    name: string;
+    img: string | null;
+    linkedin: string | null;
+    github: string | null;
+}
 
-export const projects: {}[] = [
+interface Project {
+    id: number;
+    title: string;
+    date?: string; // Optional since some projects don't have it
+    description: string;
+    image: string | null;
+    tags: string[];
+    category: string;
+    github: string | null;
+    member?: Member[]; // Optional since not all projects have members
+}
+export const projects: Project[] = [
     {
         id: 9,
         title: "E_Commerce_Website_React-js",
@@ -205,7 +222,6 @@ export const projects: {}[] = [
         ],
         category: "Front-end",
         github: null,
-        webapp: null,
     },
     {
         id: 2,
@@ -243,7 +259,7 @@ export const projects: {}[] = [
         tags: ['node-js'],
         category: "Full-Stack",
         github: "",
-        webapp: "",
+
     },
     {
         id: 10,
@@ -256,7 +272,6 @@ export const projects: {}[] = [
         tags: ["JavaScript", "Axios"],
         category: "Back-end",
         github: "",
-        webapp: "",
     },
 
 
