@@ -243,20 +243,20 @@ export const projects: Project[] = [
         category: "Full-Stack",
         github: null,
         // webapp: "https://brain-tumor.netlify.app/",
-        member: [
-            // {
-            //     name: "Krishna Bakshi",
-            //     img: null,
-            //     linkedin: null,
-            //     github: null,
-            // },
-            // {
-            //     name: "lore,",
-            //     img: null,
-            //     linkedin: null,
-            //     github: null,
-            // },
-        ],
+        // member: [
+        //     {
+        //         name: "Krishna Bakshi",
+        //         img: null,
+        //         linkedin: null,
+        //         github: null,
+        //     },
+        //     {
+        //         name: "lore,",
+        //         img: null,
+        //         linkedin: null,
+        //         github: null,
+        //     },
+        // ],
     },
     {
         id: 3,
