@@ -6,6 +6,9 @@ import HomePage from '@/app/components/HomePage/Home'
 import Skills from './components/Skills/Skills';
 import Navbar from './components/Header/Navbar';
 import Projects from './components/Projects/Projects';
+import EducationSection from './components/Education/Education';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 // No need to declare`Body` as a `string`, `styled.div` is already typed correctly
 const Body = styled.div`
 background-color:${({ theme }) => theme.bg};
@@ -30,6 +33,9 @@ const App = () => {
                       <Wrapper>
                           <Skills/>
                           <Projects/>
+                          <EducationSection/>
+                          <Contact/>
+                          <Footer/>
                       </Wrapper>
                   </Body>
           </ThemeProvider>

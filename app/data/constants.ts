@@ -7,13 +7,14 @@ export const Bio: objkeys_string_array = {
     roles: [
         "Full Stack Developer",
         "Programmer",
+        "Problem Solver",
     ],
     description:
         "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
     github: "https://github.com/krishnabakshi2455",
     resume: "https://example.com/resume.pdf",
-    linkedin: "",
-    insta: "",
+    linkedin: "https://www.linkedin.com/in/krishna-bakshi-b905222a7/?trk=opento_sprofile_details",
+    calling:"8743809657"
 };
 
 
@@ -162,13 +163,20 @@ export const skills: {
         },
     ];
 
+interface Education {
+    id:number
+    img:string
+    school:string
+    degree:string
+    date:string
+    desc:string
+}
 
-
-export const education: {}[] = [
+export const education: Education[] = [
     {
         id: 0,
         img: "https://4.bp.blogspot.com/-RpO_zpbSy7c/Tj-A2eoPlJI/AAAAAAAAA-I/Spdi9C2qbvM/s1600/IGNOU+LOGO.jpg",
-        College: "Indira Gandhi National Open University",
+        school: "Indira Gandhi National Open University",
         date: "july 2023 - july 2026",
         desc: "I am currently pursuing a Bachelor's degree in Computer Science at Indira Gandhi National Open University, New Delhi.",
         degree: "BCA (Bachelor of Computer Applications)",
@@ -191,6 +199,7 @@ export const education: {}[] = [
     },
 
 ];
+
 interface Member {
     name: string;
     img: string | null;
