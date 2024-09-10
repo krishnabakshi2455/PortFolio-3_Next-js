@@ -244,18 +244,18 @@ export const projects: Project[] = [
         github: null,
         // webapp: "https://brain-tumor.netlify.app/",
         member: [
-            {
-                name: "Krishna Bakshi",
-                img: null,
-                linkedin: null,
-                github: null,
-            },
-            {
-                name: "lore,",
-                img: null,
-                linkedin: null,
-                github: null,
-            },
+            // {
+            //     name: "Krishna Bakshi",
+            //     img: null,
+            //     linkedin: null,
+            //     github: null,
+            // },
+            // {
+            //     name: "lore,",
+            //     img: null,
+            //     linkedin: null,
+            //     github: null,
+            // },
         ],
     },
     {

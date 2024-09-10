@@ -1,6 +1,6 @@
 // components/Footer.tsx
 import React, { useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Bio } from '@/app/data/constants';
 import { usePathname } from 'next/navigation';

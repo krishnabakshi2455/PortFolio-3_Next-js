@@ -1,7 +1,7 @@
 // components/Contact.tsx
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
 
 // Styled components
