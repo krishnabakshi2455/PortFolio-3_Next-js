@@ -1,8 +1,6 @@
 import { projects } from '@/app/data/constants';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 
 // Types for Project, Member
 

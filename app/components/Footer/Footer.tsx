@@ -84,7 +84,7 @@ const Copyright = styled.p`
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.soft2};
+  color: white;
   text-align: center;
   @media (max-width: 768px) {
     margin-bottom: 4rem;
@@ -104,9 +104,6 @@ const Footer: React.FC = () => {
 
   const isActive = (href: string) => pathset === href;
 
-  const [isopen, setIsOpen] = useState<boolean>(false);
-  const theme = useTheme();
-  const toggleMenu = () => setIsOpen(!isopen);
 
   return (
     <FooterContainer>

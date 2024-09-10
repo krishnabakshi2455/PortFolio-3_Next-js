@@ -1,5 +1,5 @@
 "use client"
-export const darkTheme:{} = {
+export const darkTheme:object = {
     bg: "#1C1C27",
     bgLight: "#1C1E27",
     // primary: "#854CE6",

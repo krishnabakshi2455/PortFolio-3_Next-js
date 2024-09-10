@@ -6,7 +6,6 @@ import { Bio } from '@/app/data/constants';
 import HeroImg from '@/app/images/Mainimage.jpg';
 import HeroBgAnimation from '@/app/components/HeroBiganimation/index';
 import Typewriter from 'typewriter-effect';
-import Link from 'next/link';
 
 const HeroContainer = styled.div`
   background: ${({ theme }) => theme.card_light};

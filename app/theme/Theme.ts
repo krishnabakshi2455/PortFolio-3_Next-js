@@ -1,4 +1,4 @@
- const Theme:{}= {
+ const Theme:object= {
     // Temp fonts
     fonts: {
         title: "Space Grotesk, sans-serif",
