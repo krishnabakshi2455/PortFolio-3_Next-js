@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { Bio } from '@/app/data/constants';
 import { usePathname } from 'next/navigation';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';

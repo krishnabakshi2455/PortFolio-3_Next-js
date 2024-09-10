@@ -135,23 +135,26 @@ const Contact: React.FC = () => {
     const form = useRef<EmailForm | null>(null);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (form.current) {
-            emailjs.sendForm(
-                'service_tox7kqs',
-                'template_nv7k7mj',
-                form.current,
-                'SybVGsYS52j2TfLbi'
-            ).then(
-                (result) => {
-                    setOpen(true);
-                    form.current?.reset();
-                },
-                (error) => {
-                    console.log(error.text);
-                }
-            );
-        }
+        // e.preventDefault();
+
+        console.log(e.target);
+        
+        // if (form.current) {
+        //     emailjs.sendForm(
+        //         'service_tox7kqs',
+        //         'template_nv7k7mj',
+        //         form.current,
+        //         'SybVGsYS52j2TfLbi'
+        //     ).then(
+        //         (result) => {
+        //             setOpen(true);
+        //             form.current?.reset();
+        //         },
+        //         (error) => {
+        //             console.log(error.text);
+        //         }
+        //     );
+        // }
     };
 
     return (

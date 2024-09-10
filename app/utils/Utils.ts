@@ -13,7 +13,7 @@ export const darkTheme:object = {
     black: "#000000",
 }
 
-export const lightTheme:{} = {
+export const lightTheme:object = {
     bg: "#FFFFFF",
     bgLight: "#f0f0f0",
     primary: "#be1adb",
