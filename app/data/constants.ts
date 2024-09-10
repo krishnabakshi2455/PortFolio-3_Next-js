@@ -1,8 +1,13 @@
-interface objkeys_string_array {
-    [key: string]: string | string[] | undefined
+interface bio {
+    name: string;
+    roles: string[];
+    description: string;
+    github: string;
+    resume: string;
+    linkedin: string;
+    calling: string;
 }
-
-export const Bio: objkeys_string_array = {
+export const Bio: bio = {
     name: "Krishna Bakshi",
     roles: [
         "Full Stack Developer",
@@ -200,13 +205,6 @@ export const education: Education[] = [
 
 ];
 
-interface Member {
-    name: string;
-    img: string | null;
-    linkedin: string | null;
-    github: string | null;
-}
-
 interface Project {
     id: number;
     title: string;
@@ -216,22 +214,7 @@ interface Project {
     tags: string[];
     category: string;
     github: string | null;
-    // member?: Member[]; // Optional since not all projects have members
 }
-// member: [
-//     {
-//         name: "Krishna Bakshi",
-//         img: null,
-//         linkedin: null,
-//         github: null,
-//     },
-//     {
-//         name: "lore,",
-//         img: null,
-//         linkedin: null,
-//         github: null,
-//     },
-// ],
 export const projects: Project[] = [
     {
         id: 9,

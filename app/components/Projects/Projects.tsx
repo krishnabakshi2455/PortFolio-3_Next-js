@@ -153,17 +153,8 @@ const Description = styled.div`
   height: 25vh;
 `;
 
-const Members = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-`;
 // Main Component
 const Projects: React.FC = () => {
-
-
-
-
     const [toggle, setToggle] = useState<string>('all');
 
     // Debugging: Log current toggle and filtered projects
@@ -209,7 +200,6 @@ Make sure you check the console for the output of console.log to diagnose the pr
                             <Details>
                                 <TitleCard>{project.title}</TitleCard>
                                 <Date>{project.date || 'N/A'}</Date>
-                             
                                 <Description>{project.description}</Description>
                             </Details>
                        
