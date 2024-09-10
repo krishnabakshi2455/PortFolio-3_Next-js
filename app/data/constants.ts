@@ -1,5 +1,5 @@
 interface objkeys_string_array {
-    [key: string]: string | string[]
+    [key: string]: string | string[] | undefined
 }
 
 export const Bio: objkeys_string_array = {
@@ -216,8 +216,22 @@ interface Project {
     tags: string[];
     category: string;
     github: string | null;
-    member?: Member[]; // Optional since not all projects have members
+    // member?: Member[]; // Optional since not all projects have members
 }
+// member: [
+//     {
+//         name: "Krishna Bakshi",
+//         img: null,
+//         linkedin: null,
+//         github: null,
+//     },
+//     {
+//         name: "lore,",
+//         img: null,
+//         linkedin: null,
+//         github: null,
+//     },
+// ],
 export const projects: Project[] = [
     {
         id: 9,
@@ -242,21 +256,6 @@ export const projects: Project[] = [
         tags: ["React"],
         category: "Full-Stack",
         github: null,
-        // webapp: "https://brain-tumor.netlify.app/",
-        // member: [
-        //     {
-        //         name: "Krishna Bakshi",
-        //         img: null,
-        //         linkedin: null,
-        //         github: null,
-        //     },
-        //     {
-        //         name: "lore,",
-        //         img: null,
-        //         linkedin: null,
-        //         github: null,
-        //     },
-        // ],
     },
     {
         id: 3,

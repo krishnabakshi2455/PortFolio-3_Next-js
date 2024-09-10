@@ -5,6 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Bio } from '@/app/data/constants';
 import { usePathname } from 'next/navigation';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+
 // Styled components
 const FooterContainer = styled.div`
   width: 100%;

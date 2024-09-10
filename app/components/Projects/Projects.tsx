@@ -212,11 +212,7 @@ Make sure you check the console for the output of console.log to diagnose the pr
                              
                                 <Description>{project.description}</Description>
                             </Details>
-                            {/* <Members>
-                                {project.member?.map((member, index) => (
-                                    <Avatar key={index} src={member.img || '/placeholder.png'} />
-                                ))}
-                            </Members> */}
+                       
                         </Card>
                     ))}
                 </CardContainer>
