@@ -1,4 +1,5 @@
 import { projects } from '@/app/data/constants';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -134,12 +135,13 @@ const TitleCard = styled.div`
   color: ${({ theme }) => theme.text_secondary};
 `;
 
-// const Date = styled.div`
+// const Date = styled.a`
 //   font-size: 12px;
 //   margin-left: 2px;
 //   font-weight: 400;
 //   color: ${({ theme }) => theme.text_secondary + '80'};
 // `;
+
 
 const Description = styled.div`
   font-weight: 400;
@@ -155,60 +157,61 @@ const Description = styled.div`
 
 // Main Component
 const Projects: React.FC = () => {
-    const [toggle, setToggle] = useState<string>('all');
+  const [toggle, setToggle] = useState<string>('all');
 
-    // Debugging: Log current toggle and filtered projects
-    console.log('Current Toggle:', toggle);
-    const filteredProjects = toggle === 'all'
-        ? projects
-        : projects.filter((project) => project.category.toLowerCase() === toggle);
+  // Debugging: Log current toggle and filtered projects
+  console.log('Current Toggle:', toggle);
+  const filteredProjects = toggle === 'all'
+    ? projects
+    : projects.filter((project) => project.category.toLowerCase() === toggle);
 
-    console.log('Filtered Projects:', filteredProjects);
+  console.log('Filtered Projects:', filteredProjects);
 
-    {/*Key Points:
+  {/*Key Points:
 Category Comparison: Ensure that category.toLowerCase() matches exactly with project.category.toLowerCase().
 Console Logs: Added console.log statements to check the current toggle state and the filtered projects.
 Fallback for Images: Added a fallback image for null or missing images.
 Make sure you check the console for the output of console.log to diagnose the problem further. If the category names in the projects array or the toggle buttons don’t match exactly, adjust them accordingly. */}
-    return (
-        <Container id="projects">
-            <Wrapper>
-                <Title>Projects</Title>
-                <Desc>Explore my projects in different areas</Desc>
-                <ToggleButtonGroup>
-                    {['All', 'Front-end', 'Back-end', 'Full-Stack'].map((category) => (
-                        <React.Fragment key={category}>
-                            <ToggleButton
-                                active={toggle === category.toLowerCase()}
-                                onClick={() => setToggle(category.toLowerCase())}
-                            >
-                                {category}
-                            </ToggleButton>
-                            <Divider />
-                        </React.Fragment>
-                    ))}
-                </ToggleButtonGroup>
-                <CardContainer>
-                    {filteredProjects.map((project) => (
-                        <Card key={project.id} >
-                            <Imageb src={project.image || '/placeholder.png'} alt={project.title} />
-                            <Tags>
-                                {project.tags.map((tag, index) => (
-                                    <Tag key={index}>{tag}</Tag>
-                                ))}
-                            </Tags>
-                            <Details>
-                                <TitleCard>{project.title}</TitleCard>
-                                {/* <Date>{project.date || 'N/A'}</Date> */}
-                                <Description>{project.description}</Description>
-                            </Details>
-                       
-                        </Card>
-                    ))}
-                </CardContainer>
-            </Wrapper>
-        </Container>
-    );
+  return (
+    <Container id="projects">
+      <Wrapper>
+        <Title>Projects</Title>
+        <Desc>Explore my projects in different areas</Desc>
+        <ToggleButtonGroup>
+          {['All', 'Front-end', 'Back-end', 'Full-Stack'].map((category) => (
+            <React.Fragment key={category}>
+              <ToggleButton
+                active={toggle === category.toLowerCase()}
+                onClick={() => setToggle(category.toLowerCase())}
+              >
+                {category}
+              </ToggleButton>
+              <Divider />
+            </React.Fragment>
+          ))}
+        </ToggleButtonGroup>
+        <CardContainer>
+          {filteredProjects.map((project) => (
+            <Card key={project.id} >
+              <Imageb src={project.image || '/placeholder.png'} alt={project.title} />
+              <Tags>
+                {project.tags.map((tag, index) => (
+                  <Tag key={index}>{tag}</Tag>
+                ))}
+              </Tags>
+              <Details>
+                {/* <Date>{project.livelink || 'N/A'}</Date> */}
+                <Link href={project.livelink || 'N/A'} className='text-lg ml-1 text-blue-900 hover:text-blue-500 transition-all'>Live Link</Link>
+                <TitleCard>{project.title}</TitleCard>
+                <Description>{project.description}</Description>
+              </Details>
+
+            </Card>
+          ))}
+        </CardContainer>
+      </Wrapper>
+    </Container>
+  );
 };
 
 export default Projects;
