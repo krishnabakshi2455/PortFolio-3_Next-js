@@ -134,12 +134,12 @@ const TitleCard = styled.div`
   color: ${({ theme }) => theme.text_secondary};
 `;
 
-const Date = styled.div`
-  font-size: 12px;
-  margin-left: 2px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary + '80'};
-`;
+// const Date = styled.div`
+//   font-size: 12px;
+//   margin-left: 2px;
+//   font-weight: 400;
+//   color: ${({ theme }) => theme.text_secondary + '80'};
+// `;
 
 const Description = styled.div`
   font-weight: 400;
