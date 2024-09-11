@@ -199,7 +199,7 @@ Make sure you check the console for the output of console.log to diagnose the pr
                             </Tags>
                             <Details>
                                 <TitleCard>{project.title}</TitleCard>
-                                <Date>{project.date || 'N/A'}</Date>
+                                {/* <Date>{project.date || 'N/A'}</Date> */}
                                 <Description>{project.description}</Description>
                             </Details>
                        
